@@ -31,10 +31,10 @@ public class SqlQueries {
             """;
     public static final String SELECT_USERS_CONTAINS_A = """
              SELECT * FROM `cursor-jdbc`.user where first_name like '%a%';
-                        
+
             """;
     public static final String SELECT_USERS_OVER_18 = """
              SELECT * FROM `cursor-jdbc`.user where age>='18';
-                        
+
             """;
 }

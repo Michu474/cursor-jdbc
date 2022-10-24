@@ -12,14 +12,15 @@ public class Main {
         ArrayList<User> underEighteen = new ArrayList<>();
         ArrayList<User> endsWithO = new ArrayList<>();
 
-        try (var connection = DriverManager.getConnection(JDBCConstants.URL,JDBCConstants.USERNAME,JDBCConstants.PASSWORD)) {
-            var statement = connection.createStatement();
+        try (Connection connection = DriverManager.getConnection(JDBCConstants.URL,JDBCConstants.USERNAME,JDBCConstants.PASSWORD);
+             Statement statement = connection.createStatement()) {
 
-            ResultSet resultSetBetweenEighteenAndSixty = null;
-            ResultSet resultSetUnderEighteen = null;
-            ResultSet resultSetEndsWithO = null;
-            ResultSet resultSetOverEighteen = null;
-            ResultSet resultSetContainsA = null;
+
+            ResultSet resultSetBetweenEighteenAndSixty;
+            ResultSet resultSetUnderEighteen;
+            ResultSet resultSetEndsWithO;
+            ResultSet resultSetOverEighteen;
+            ResultSet resultSetContainsA;
 
 //            statement.execute(SqlQueries.CREATE_TABLE);
 //            statement.execute(SqlQueries.INSERT_USERS);
@@ -34,16 +35,28 @@ public class Main {
             betweenEighteenAndSixty = OperationsWithListsOfPeople.fillTheListWith(resultSetBetweenEighteenAndSixty,betweenEighteenAndSixty);
 
             resultSetContainsA = statement.executeQuery(SqlQueries.SELECT_USERS_CONTAINS_A);
+            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
+            
             resultSetOverEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_OVER_18);
+            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
+
 
             OperationsWithListsOfPeople.ShowSavedList(endsWithO,"endsWithO");
             OperationsWithListsOfPeople.ShowSavedList(underEighteen,"underEighteen");
             OperationsWithListsOfPeople.ShowSavedList(betweenEighteenAndSixty,"betweenEighteenAndSixty");
-            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
-            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
+
+
+//
+
+
+
         }
         catch(SQLException e){
             System.out.println("Error"+e.getMessage());
         }
+        finally {
+
+        }
+
     }
 }

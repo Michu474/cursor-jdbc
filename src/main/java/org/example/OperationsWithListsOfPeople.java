@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,22 +27,19 @@ public class OperationsWithListsOfPeople {
         }
         catch (SQLException e)
         {
-            throw new RuntimeException(e);
+            System.out.println("Error"+e.getMessage());
         }
-
-
-
-
+        return null;
     }
     public static void ShowSavedList(ArrayList<User> arrayList,String nameOfField){
+
+        System.out.println(nameOfField);
         for (User user:arrayList) {
 
-            System.out.println(nameOfField);
             System.out.println(user.getFirst_name()+" "+ user.getLast_name()+" "+ user.getAge());
-            System.out.println("\n");
-
 
         }
+        System.out.println("\n");
 
     }
     public static void ShowCountOfPeople(ResultSet resultSet,String nameOfField){
@@ -68,4 +66,9 @@ public class OperationsWithListsOfPeople {
 
     }
 }
+
+
+
+
+
 
