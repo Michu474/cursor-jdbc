@@ -36,7 +36,7 @@ public class Main {
 
             resultSetContainsA = statement.executeQuery(SqlQueries.SELECT_USERS_CONTAINS_A);
             OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
-            
+
             resultSetOverEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_OVER_18);
             OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
 
@@ -54,9 +54,7 @@ public class Main {
         catch(SQLException e){
             System.out.println("Error"+e.getMessage());
         }
-        finally {
-
-        }
+       
 
     }
 }
