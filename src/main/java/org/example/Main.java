@@ -23,52 +23,26 @@ public class Main {
 
 //            statement.execute(SqlQueries.CREATE_TABLE);
 //            statement.execute(SqlQueries.INSERT_USERS);
-//if()
 
+            resultSetEndsWithO = statement.executeQuery(SqlQueries.SELECT_USERS_ENDS_WITH_O);
+            endsWithO = OperationsWithListsOfPeople.fillTheListWith(resultSetEndsWithO,endsWithO);
 
-           if(resultSetEndsWithO==null){
-               resultSetEndsWithO = statement.executeQuery(SqlQueries.SELECT_USERS_ENDS_WITH_O);
-               endsWithO = OperationsWithListsOfPeople.fillTheListWith(resultSetEndsWithO,endsWithO);
+            resultSetUnderEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_UNDER_18);
+            underEighteen = OperationsWithListsOfPeople.fillTheListWith(resultSetUnderEighteen,underEighteen);
 
-               System.out.println("endsWithO");
-               OperationsWithListsOfPeople.ShowSavedList(endsWithO);
-               System.out.println("\n");
-           }
-           if (resultSetUnderEighteen==null) {
-               resultSetUnderEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_UNDER_18);
-               underEighteen = OperationsWithListsOfPeople.fillTheListWith(resultSetUnderEighteen,underEighteen);
+            resultSetBetweenEighteenAndSixty = statement.executeQuery(SqlQueries.SELECT_USERS_BETWEEN_18_60);
+            betweenEighteenAndSixty = OperationsWithListsOfPeople.fillTheListWith(resultSetBetweenEighteenAndSixty,betweenEighteenAndSixty);
 
-               System.out.println("underEighteen");
-               OperationsWithListsOfPeople.ShowSavedList(underEighteen);
-               System.out.println("\n");
-           }
-           if (resultSetBetweenEighteenAndSixty==null) {
-               resultSetBetweenEighteenAndSixty = statement.executeQuery(SqlQueries.SELECT_USERS_BETWEEN_18_60);
-               betweenEighteenAndSixty = OperationsWithListsOfPeople.fillTheListWith(resultSetBetweenEighteenAndSixty,betweenEighteenAndSixty);
+            resultSetContainsA = statement.executeQuery(SqlQueries.SELECT_USERS_CONTAINS_A);
+            resultSetOverEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_OVER_18);
 
-               System.out.println("betweenEighteenAndSixty");
-               OperationsWithListsOfPeople.ShowSavedList(betweenEighteenAndSixty);
-               System.out.println("\n");
-           }
-            if (resultSetContainsA==null){
-                resultSetContainsA = statement.executeQuery(SqlQueries.SELECT_USERS_CONTAINS_A);
-                OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
-            }
-            if (resultSetOverEighteen==null){
-                resultSetOverEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_OVER_18);
-                OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
-            }
-           else{
-               System.out.println("endsWithO");
-               OperationsWithListsOfPeople.ShowSavedList(endsWithO);
-               System.out.println("underEighteen");
-               OperationsWithListsOfPeople.ShowSavedList(underEighteen);
-               System.out.println("betweenEighteenAndSixty");
-               OperationsWithListsOfPeople.ShowSavedList(betweenEighteenAndSixty);
-           }
-
-
-        }catch(SQLException e){
+            OperationsWithListsOfPeople.ShowSavedList(endsWithO,"endsWithO");
+            OperationsWithListsOfPeople.ShowSavedList(underEighteen,"underEighteen");
+            OperationsWithListsOfPeople.ShowSavedList(betweenEighteenAndSixty,"betweenEighteenAndSixty");
+            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
+            OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
+        }
+        catch(SQLException e){
             System.out.println("Error"+e.getMessage());
         }
     }

@@ -33,10 +33,12 @@ public class OperationsWithListsOfPeople {
 
 
     }
-    public static void ShowSavedList(ArrayList<User> arrayList){
+    public static void ShowSavedList(ArrayList<User> arrayList,String nameOfField){
         for (User user:arrayList) {
 
+            System.out.println(nameOfField);
             System.out.println(user.getFirst_name()+" "+ user.getLast_name()+" "+ user.getAge());
+            System.out.println("\n");
 
 
         }
