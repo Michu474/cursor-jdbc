@@ -18,9 +18,13 @@ public class Main {
             ResultSet resultSetBetweenEighteenAndSixty = null;
             ResultSet resultSetUnderEighteen = null;
             ResultSet resultSetEndsWithO = null;
+            ResultSet resultSetOverEighteen = null;
+            ResultSet resultSetContainsA = null;
 
 //            statement.execute(SqlQueries.CREATE_TABLE);
 //            statement.execute(SqlQueries.INSERT_USERS);
+//if()
+
 
            if(resultSetEndsWithO==null){
                resultSetEndsWithO = statement.executeQuery(SqlQueries.SELECT_USERS_ENDS_WITH_O);
@@ -46,6 +50,14 @@ public class Main {
                OperationsWithListsOfPeople.ShowSavedList(betweenEighteenAndSixty);
                System.out.println("\n");
            }
+            if (resultSetContainsA==null){
+                resultSetContainsA = statement.executeQuery(SqlQueries.SELECT_USERS_CONTAINS_A);
+                OperationsWithListsOfPeople.ShowCountOfPeople(resultSetContainsA,"resultSetContainsA\n");
+            }
+            if (resultSetOverEighteen==null){
+                resultSetOverEighteen = statement.executeQuery(SqlQueries.SELECT_USERS_OVER_18);
+                OperationsWithListsOfPeople.ShowCountOfPeople(resultSetOverEighteen,"resultSetOverEighteen\n");
+            }
            else{
                System.out.println("endsWithO");
                OperationsWithListsOfPeople.ShowSavedList(endsWithO);

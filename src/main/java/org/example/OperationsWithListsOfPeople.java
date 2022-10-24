@@ -42,5 +42,28 @@ public class OperationsWithListsOfPeople {
         }
 
     }
+    public static void ShowCountOfPeople(ResultSet resultSet,String nameOfField){
+        int count=0;
+        try {
+            while(resultSet.next())
+            {
+
+                count++;
+
+            }
+
+            System.out.println(nameOfField+" "+count);;
+
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+
+
+
+
+    }
 }
 

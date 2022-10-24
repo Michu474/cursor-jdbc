@@ -29,4 +29,12 @@ public class SqlQueries {
              SELECT * FROM `cursor-jdbc`.user where first_name like '%o';
                         
             """;
+    public static final String SELECT_USERS_CONTAINS_A = """
+             SELECT * FROM `cursor-jdbc`.user where first_name like '%a%';
+                        
+            """;
+    public static final String SELECT_USERS_OVER_18 = """
+             SELECT * FROM `cursor-jdbc`.user where age>='18';
+                        
+            """;
 }
